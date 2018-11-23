@@ -13,7 +13,7 @@ class PlayerHand extends React.Component {
             <Hand>
                 {playerDeck.map(card => {
                     // return <div className='card-holder' ><Card thisCard={card} /></div>
-                    return <Card thisCard={card} />
+                    return <Card thisCard={card} attack={this.props.attack} />
                 })}
             </Hand>
         )
@@ -26,8 +26,7 @@ const Hand = styled.div`
     width: auto;
     position: fixed;
     bottom: 0;
-    left: 10%;
-
+    left: 110px;
 
     /* .card-holder {
         height: 150px;

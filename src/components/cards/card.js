@@ -12,12 +12,12 @@ class Card extends React.Component {
 
     render(){
         return (
-            <CardWrapper>
+            <CardWrapper onClick={()=>this.props.attack(this.props.thisCard.damage)} >
                 <div className="card">
                 
                     <div className="card-title">{this.props.thisCard.name}
 
-                    { this.props.thisCard.castingCost === 0 ? '' : <div><img className="card-title-icon" src={wand} />{this.props.thisCard.castingCost}</div> }
+                    { this.props.thisCard.castingCost === 0 ? <div></div> : <div><img className="card-title-icon" src={wand} />{this.props.thisCard.castingCost}</div> }
                         
                     </div>
                         
@@ -37,16 +37,12 @@ class Card extends React.Component {
                     {
                         this.props.thisCard.health === null ? <div></div> : <div><img className='card-health-icon' src={shield}/> {this.props.thisCard.health} </div>
                     }
-
                     {/* {
                         if(this.props.thisCard.damage !== null) {
                             return <div><img className='card-damage-icon' src={sword} /> {this.props.thisCard.damage} </div>;
                         }
                     } */}
-                            
-                            
                     </div>
-                    {/* <p>{this.props.thisCard.damage} / {this.props.thisCard.health}</p> */}
                 </div>
             </CardWrapper>
         );
