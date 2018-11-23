@@ -39,6 +39,12 @@ class Main extends React.Component {
         }
     }
 
+    harvestMana = (amount) => {
+        this.setState({
+            manaPool: this.state.manaPool + amount
+        })
+    }
+
     render(){
         return(
             <div>
@@ -53,7 +59,7 @@ class Main extends React.Component {
                         <div>Mana: {this.state.manaPool}</div>
                     </div>
                 </HealthBoxes>
-                <PlayerTable cards={this.state.playerTable} />
+                <PlayerTable cards={this.state.playerTable} harvest={this.harvestMana} />
                 <Hand attack={this.attackComp} playerHand={this.state.playerHand} playCard={this.playCard} />
             </div>
         );

@@ -10,9 +10,10 @@ class PlayerHand extends React.Component {
     render() {
         return(
             <Hand>
-                {this.props.playerHand.map(card => {
+                {this.props.playerHand.map((card,index) => {
                     // return <div className='card-holder' ><Card thisCard={card} /></div>
-                    return <Card thisCard={card} attack={this.props.attack} playCard={this.props.playCard} key={card.id} />
+                    return <div className='card-holder'><Card thisCard={card} inHand={true}
+                    onClick={()=>this.props.playCard(card.castingCost,card.id)} key={card.id} /></div>
                 })}
             </Hand>
         )
@@ -27,21 +28,18 @@ const Hand = styled.div`
     bottom: 0;
     left: 110px;
 
-    /* .card-holder {
-        height: 150px;
-        width: 100px;
-        cursor: pointer;
-
-        &:hover {
-            height: 300px;
-            width: 200px;
-        }
+    .card-holder {
+        margin-left: -30px;
 
         &:first-of-type {
-            height: 300px;
-            width: 200px;
+            margin-left: 0;
         }
-    } */
+
+        &:hover {
+            margin-left: 0;
+            margin-right: 30px;
+        }
+    }
 `
 
 export default PlayerHand;

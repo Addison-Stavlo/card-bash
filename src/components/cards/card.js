@@ -7,13 +7,24 @@ import shield from  './shield.svg'
 class Card extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            tapped: false
+        }
+    }
 
+    playCard = () => {
+        if(this.props.thisCard.type === 'Land Card' && this.state.tapped === false){
+            this.props.harvest(1);
+            this.setState({tapped: true})
+        }
     }
 
     render(){
         return (
             // <CardWrapper onClick={()=>this.props.attack(this.props.thisCard.damage)} >
-            <CardWrapper onClick={()=>this.props.playCard(this.props.thisCard.castingCost,this.props.thisCard.id)} >
+            // <CardWrapper onClick={()=>this.props.playCard(this.props.thisCard.castingCost,this.props.thisCard.id)} >
+            // <CardWrapper onClick={this.props.onClick} >
+            <CardWrapper onClick={this.props.inHand ? this.props.onClick : this.playCard } tapped={this.state.tapped} >
                 <div className="card">
                 
                     <div className="card-title">{this.props.thisCard.name}
@@ -62,6 +73,7 @@ const CardWrapper = styled.div`
     color: white;
     font-size: 10px;
     cursor: pointer;
+    transform: ${props => props.tapped ? 'rotate(90deg)' : 'none'};
 
     .card {
         box-sizing: border-box;
@@ -112,7 +124,7 @@ const CardWrapper = styled.div`
 
         .card-combat-info {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
             align-items: center;
             padding: 0;
 
