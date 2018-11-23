@@ -1,6 +1,7 @@
 
 const playerDeck = [
     {
+        id: 0,
         name: 'Forge Breaker',
         type: 'Minion Card',
         background: 'https://previews.123rf.com/images/anoushkatoronto/anoushkatoronto1608/anoushkatoronto160800826/61512607-colorful-blue-green-stone-texture-background-closeup.jpg',
@@ -11,6 +12,7 @@ const playerDeck = [
         castingCost: 3
     },
     {
+        id: 1,
         name: 'Bountiful Wilds',
         type: 'Land Card',
         background: 'https://previews.123rf.com/images/anoushkatoronto/anoushkatoronto1608/anoushkatoronto160800826/61512607-colorful-blue-green-stone-texture-background-closeup.jpg',
@@ -21,6 +23,7 @@ const playerDeck = [
         castingCost: 0
     },
     {
+        id: 2,
         name: 'Kindle',
         type: 'Magic Damage',
         background: 'https://previews.123rf.com/images/anoushkatoronto/anoushkatoronto1608/anoushkatoronto160800826/61512607-colorful-blue-green-stone-texture-background-closeup.jpg',
@@ -31,6 +34,7 @@ const playerDeck = [
         castingCost: 2
     },
     {
+        id: 3,
         name: 'Green Mtn',
         type: 'Land Card',
         background: 'https://previews.123rf.com/images/anoushkatoronto/anoushkatoronto1608/anoushkatoronto160800826/61512607-colorful-blue-green-stone-texture-background-closeup.jpg',
@@ -41,6 +45,7 @@ const playerDeck = [
         castingCost: 0
     },
     {
+        id: 4,
         name: 'Goblin Scout',
         type: 'Minion Card',
         background: 'https://previews.123rf.com/images/anoushkatoronto/anoushkatoronto1608/anoushkatoronto160800826/61512607-colorful-blue-green-stone-texture-background-closeup.jpg',
@@ -51,6 +56,7 @@ const playerDeck = [
         castingCost: 1
     },
     {
+        id: 5,
         name: 'Ferocious Ursa',
         type: 'Minion Card',
         background: 'https://previews.123rf.com/images/anoushkatoronto/anoushkatoronto1608/anoushkatoronto160800826/61512607-colorful-blue-green-stone-texture-background-closeup.jpg',
@@ -60,6 +66,7 @@ const playerDeck = [
         health: 3,
         castingCost: 4
     },    {
+        id: 6,
         name: 'Island Outpost',
         type: 'Land Card',
         background: 'https://previews.123rf.com/images/anoushkatoronto/anoushkatoronto1608/anoushkatoronto160800826/61512607-colorful-blue-green-stone-texture-background-closeup.jpg',

@@ -12,7 +12,8 @@ class Card extends React.Component {
 
     render(){
         return (
-            <CardWrapper onClick={()=>this.props.attack(this.props.thisCard.damage)} >
+            // <CardWrapper onClick={()=>this.props.attack(this.props.thisCard.damage)} >
+            <CardWrapper onClick={()=>this.props.playCard(this.props.thisCard.castingCost,this.props.thisCard.id)} >
                 <div className="card">
                 
                     <div className="card-title">{this.props.thisCard.name}

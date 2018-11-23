@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from './card';
 import styled from 'styled-components';
-import playerDeck from '../../playerDeck.js'
 
 class PlayerHand extends React.Component {
     constructor(props){
@@ -11,9 +10,9 @@ class PlayerHand extends React.Component {
     render() {
         return(
             <Hand>
-                {playerDeck.map(card => {
+                {this.props.playerHand.map(card => {
                     // return <div className='card-holder' ><Card thisCard={card} /></div>
-                    return <Card thisCard={card} attack={this.props.attack} />
+                    return <Card thisCard={card} attack={this.props.attack} playCard={this.props.playCard} key={card.id} />
                 })}
             </Hand>
         )
