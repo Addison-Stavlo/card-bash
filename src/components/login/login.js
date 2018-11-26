@@ -6,7 +6,7 @@ const LogIn = App =>
         constructor(props){
             super(props);
             this.state = {
-             isLoggedIn: true
+             isLoggedIn: false
             }
         }
 
