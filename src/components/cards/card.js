@@ -11,12 +11,28 @@ class Card extends React.Component {
             tapped: false
         }
     }
+    componentDidUpdate(){
+        if(this.props.isResetting && this.state.tapped === true){
+            this.setState({tapped: false});
+        }
+    }
 
-    playCard = () => {
+    useCard = () => {
+        if(this.props.isResetting){
+            return alert('Please Draw a Card');
+        }    
         if(this.props.thisCard.type === 'Land Card' && this.state.tapped === false){
-            this.props.harvest(1);
+            this.props.harvest();
             this.setState({tapped: true})
         }
+        else if(this.props.thisCard.type === 'Minion Card' && this.state.tapped === false){
+            this.props.attack(this.props.thisCard.damage);
+            this.setState({tapped: true})
+        }
+    }
+
+    unTap = () => {
+        this.setState({tapped: false})
     }
 
     render(){
@@ -24,7 +40,7 @@ class Card extends React.Component {
             // <CardWrapper onClick={()=>this.props.attack(this.props.thisCard.damage)} >
             // <CardWrapper onClick={()=>this.props.playCard(this.props.thisCard.castingCost,this.props.thisCard.id)} >
             // <CardWrapper onClick={this.props.onClick} >
-            <CardWrapper onClick={this.props.inHand ? this.props.onClick : this.playCard } tapped={this.state.tapped} >
+            <CardWrapper onClick={this.props.inHand ? this.props.onClick : this.useCard } tapped={this.state.tapped} >
                 <div className="card">
                 
                     <div className="card-title">{this.props.thisCard.name}

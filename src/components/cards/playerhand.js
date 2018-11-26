@@ -13,7 +13,7 @@ class PlayerHand extends React.Component {
                 {this.props.playerHand.map((card,index) => {
                     // return <div className='card-holder' ><Card thisCard={card} /></div>
                     return <div className='card-holder'><Card thisCard={card} inHand={true}
-                    onClick={()=>this.props.playCard(card.castingCost,card.id)} key={card.id} /></div>
+                    onClick={()=>this.props.playCard(card.castingCost,card.id,card.type,card.damage)} key={card.id} isResetting={this.props.isResetting}/></div> 
                 })}
             </Hand>
         )
