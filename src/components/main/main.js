@@ -21,7 +21,8 @@ class Main extends React.Component {
             playerTable: [],
             playerTableLands: [],
             hasPlayedLand: false,
-            isResetting: true
+            isResetting: true,
+            helpText: 'Draw a card to begin your Turn.'
         }
     }
     
@@ -36,7 +37,7 @@ class Main extends React.Component {
     }
 
     attackComp = (damage) => {
-        this.setState({compHealth: this.state.compHealth-damage});
+        this.setState({compHealth: this.state.compHealth-damage, helpText: 'Play another card or click "End Turn"'});
     }
 
     playCard = (cost,id,type,damage) => {
@@ -51,9 +52,10 @@ class Main extends React.Component {
                 {
                     playerHand: this.state.playerHand.filter((item)=>{
                         return item.id !== id;}),
-                    playerTableLands: [...this.state.playerTableLands, this.state.playerHand.filter((item)=>{
-                        return item.id === id;})],
-                    hasPlayedLand: true
+                    playerTableLands: [...this.state.playerTableLands, this.state.playerHand.find((item)=>{
+                        return item.id === id})],
+                    hasPlayedLand: true,
+                    helpText: 'Click a played Land to tap it for Mana'
                  })
         }
         else if(type === 'Magic Damage' && cost <= this.state.manaPool){
@@ -61,7 +63,8 @@ class Main extends React.Component {
                 playerHand: this.state.playerHand.filter((item)=>{
                     return item.id !== id;}),
                 manaPool: this.state.manaPool - cost,
-                compHealth: this.state.compHealth - damage           
+                compHealth: this.state.compHealth - damage,
+                helpText: 'Play another card or click "End Turn"'           
             })
         }
         else if(type !== 'Land Card' && cost <= this.state.manaPool) {
@@ -69,9 +72,10 @@ class Main extends React.Component {
                 {
                     playerHand: this.state.playerHand.filter((item)=>{
                         return item.id !== id;}),
-                    playerTable: [...this.state.playerTable, this.state.playerHand.filter((item)=>{
+                    playerTable: [...this.state.playerTable, this.state.playerHand.find((item)=>{
                         return item.id === id;})],
-                    manaPool: this.state.manaPool - cost
+                    manaPool: this.state.manaPool - cost,
+                    helpText: 'Attack by clicking your creature card'
                  })
         }
     }
@@ -79,12 +83,13 @@ class Main extends React.Component {
 
     harvestMana = () => {
         this.setState({
-            manaPool: this.state.manaPool + 1
+            manaPool: this.state.manaPool + 1,
+            helpText: 'Play a creature or magic card with your newly harvested Mana.'
         })
     }
 
     endTurn = () => {
-        this.setState({manaPool: 0, isResetting: true, hasPlayedLand: false});
+        this.setState({manaPool: 0, isResetting: true, hasPlayedLand: false, helpText: 'Draw a card to begin your turn'});
     }
 
     startTurn = () => {
@@ -95,11 +100,15 @@ class Main extends React.Component {
             this.setState({isResetting: false});
             alert('you have no more cards in the deck')
         }
+        this.setState({helpText: 'Play a Land Card if able'})
     }
 
     render(){
         return(
             <div>
+                <HelpBox>
+                    {this.state.helpText}
+                </HelpBox>
                 <HealthBoxes>
                     <div className="healthbox compHealth">
                         <div>Comp</div>
@@ -122,6 +131,20 @@ class Main extends React.Component {
         );
     }
 }
+
+const HelpBox = styled.div`
+    position: fixed;
+    right: 5%;
+    max-width: 70%;
+    top: 20px;
+    font-size: 30px;
+    padding: 20px;
+    font-weight: bold;
+    border: 2px solid red;
+    border-radius: 30px;
+    background: white;
+    z-index: 2;
+`
 
 const HealthBoxes = styled.div`
     height: 100vh;

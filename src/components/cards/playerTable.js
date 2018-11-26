@@ -12,12 +12,12 @@ class PlayerTable extends React.Component {
             <PlayerTableWrapper>
                 <div className="card-row cards">
                 {this.props.cards.map(card=>{
-                    return <Card thisCard={card[0]} key={card.id} inHand={false} attack={this.props.attack} isResetting={this.props.isResetting} />
+                    return <Card thisCard={card} key={card.id} inHand={false} attack={this.props.attack} isResetting={this.props.isResetting} />
                 })}
                 </div>
                 <div className="card-row lands">
                 {this.props.lands.map(card=>{
-                    return <Card thisCard={card[0]} key={card.id} inHand={false} harvest={this.props.harvest} isResetting={this.props.isResetting} />
+                    return <Card thisCard={card} key={card.id} inHand={false} harvest={this.props.harvest} isResetting={this.props.isResetting} />
                 })}
                 </div>
             </PlayerTableWrapper>
@@ -26,7 +26,6 @@ class PlayerTable extends React.Component {
 }
 
 const PlayerTableWrapper = styled.div`
-    border: 1px solid red;
     width: 80%;
     left: 110px;
     height: auto;
